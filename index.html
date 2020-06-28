@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test task</title>
+	<link rel="stylesheet" href="public/css/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+	
+
+	<!-- Блок выравненный по центру -->
+	<div class="wrapper">
+		
+		<!-- Оболочка блока таблицы -->
+		<div class="work-list">
+
+			<!-- Текстовый заголовок блока -->
+			<div class="work-list__header">
+				<h2>
+					Название таблицы
+				</h2>
+			</div>
+
+			<!-- Фильтр по дате, возможно другой функционал -->
+			<div class="work-list__filter">
+				<div class="some-btn">
+					выбор даты
+				</div>
+				<div class="some-btn">
+					выбор диапозона 
+				</div>
+			</div>
+
+
+			<!-- Заголовок таблицы -->
+			<!-- 
+				С точки зрения SEO лучше это стелать через 
+				table/thead/tbody, но захолось сделать на блоках
+			-->
+			<div class="work-list__column-names flex">
+
+				<div class="work-list__static-column flex-grow left-block">
+					<div class="big">
+						Имя
+					</div>
+					<div class="big">
+						Место работы/роль
+					</div>
+				</div>
+
+				<div class="work-list__dynamic-column">
+				
+					<div class="small">
+						00.00
+					</div>
+					<div class="small">
+						01.00
+					</div>
+					<div class="small">
+						02.00
+					</div>
+					<div class="small">
+						03.00
+					</div>
+					<div class="small">
+						04.00
+					</div>
+					<div class="small">
+						05.00
+					</div>
+
+				</div>
+				
+			</div>
+
+
+			<!-- Содержание таблицы -->
+			<div class="work-list__column-content">
+				
+				<div class="work-list__column-content-pt flex">
+
+					<div class="work-list__static-column-pt flex-grow left-block">
+						<div class="big">Влад</div>
+						<div class="big">Президент</div>
+					</div>
+
+					<div class="work-list__dynamic-column-pt flex-grow grow-this">
+						<div class="small">
+							.
+						</div>
+						<div class="small">
+							.
+						</div>
+						<div class="small">
+							.
+						</div>
+						<div class="small">
+							.
+						</div>
+						<div class="small">
+							.
+						</div>
+						<div class="small">
+							.
+						</div>
+
+						<div class="work-list__statusBar">
+							.
+						</div>
+					</div>
+
+
+				</div>
+
+				<div class="work-list__column-content-pt flex">
+
+						<div class="work-list__static-column-pt flex-grow left-block">
+							<div class="big">Влад</div>
+							<div class="big">Президент</div>
+						</div>
+
+						<div class="work-list__dynamic-column-pt flex-grow grow-this">
+							<div class="small">
+								.
+							</div>
+							<div class="small">
+								.
+							</div>
+							<div class="small">
+								.
+							</div>
+							<div class="small">
+								.
+							</div>
+							<div class="small">
+								.
+							</div>
+							<div class="small">
+								.
+							</div>
+							
+							<div class="work-list__statusBar">
+								.
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+				
+			</div>
+
+			
+		</div>
+
+	</div>
+
+	<script src="public/js/c_pt.js"></script>
+	<script src="public/js/main.js"></script>
+</body>
+</html>

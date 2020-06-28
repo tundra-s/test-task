@@ -1,0 +1,128 @@
+/*
+На старые браузеры не расчитывал, 
+так что префиксы ставить не стал
+*/
+
+*{
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Montserrat', 'Arial', sans-serif;
+}
+
+.wrapper{
+	width: 1200px;
+	margin: auto;
+}
+
+
+/*=============================*/
+/*===		DELETE 			===*/
+/*=============================*/
+
+.work-list__statusBar{
+	position: absolute;
+	width: 100px;
+	top: 0px;
+	left: 0px;
+	background: red;
+}
+
+
+
+.work-list__static-column1, .work-list__dynamic-column1{
+	/*border: 1px solid blue;*/
+}
+
+.border{
+	border: 1px solid red;
+}
+
+/*=============================*/
+/*===		/DELETE 		===*/
+/*=============================*/
+
+.flex, .flex-grow{
+	display: flex;
+}
+
+
+.flex-grow>div, .grow-this{
+	flex-grow: 1;
+}
+
+.left-block{
+	width: 300px;
+}
+
+
+
+
+
+.work-list{
+	border: 1px solid red;
+}
+
+.work-list__column-names{
+	/**/
+}
+
+	.work-list__static-column{
+		display: flex;
+		width: 300px;
+		border: 1px solid green;
+	}
+
+	.work-list__dynamic-column{
+		display: flex;
+		position: relative;
+		flex-grow: 1;
+		border: 1px solid red;
+	}
+
+		.work-list__dynamic-column>div{
+			flex-grow: 1;
+			font-size: 0.8em;
+		}
+
+
+.work-list__column-content-pt{}
+
+
+
+
+
+
+
+.work-list__dynamic-column-pt{
+	position: relative;
+}
+
+
+.work-list__dynamic-column-pt>div{
+	overflow: hidden;
+	border-left: 1px solid rgb(50, 50, 50);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
