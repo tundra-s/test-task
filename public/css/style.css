@@ -20,13 +20,27 @@
 /*===		DELETE 			===*/
 /*=============================*/
 
-.work-list__statusBar{
+.work-list__statusBarReal{
 	position: absolute;
 	width: 100px;
+	height: 10px;
 	top: 0px;
 	left: 0px;
+	border-radius: 10px;
 	background: red;
 }
+
+
+.work-list__statusBarDream{
+	position: absolute;
+	width: 100px;
+	height: 10px;
+	top: 10px;
+	left: 0px;
+	border-radius: 10px;
+	background: green;
+}
+
 
 
 
@@ -104,6 +118,9 @@
 	border-left: 1px solid rgb(50, 50, 50);
 }
 
+.work-list__dynamic-column-pt div{
+	transition: 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
 
 
 
