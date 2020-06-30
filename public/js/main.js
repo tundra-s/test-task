@@ -34,7 +34,7 @@ window.onload = () => {
 		// }
 
 		try{
-			data = JSON.parse(DB3	_json);
+			data = JSON.parse(DB3_json);
 		}catch(e){
 			console.log(e);
 		}
@@ -246,7 +246,6 @@ function addObj(name = 'defName', place = 'defPlace', role = 'defRole'){
 }
 
 
-
 // Это генерация элементов таблицы
 addObj('Kiril', "Soft", "mr.Soft");
 addObj('Boris', "Hard", "mr.Hard");
@@ -260,7 +259,6 @@ addObj('Jack', "Satt", "dir mr.Jack ");
 addObj('Kack', "Salt", "dir mr.Mop ");
 addObj('Ann', "Ssgft", "dirgd mr.Mop ");
 addObj('Ssdjkg', "Ysgft", "dirgd mr.Mop ");
-
 
 
 
