@@ -1,10 +1,4 @@
-// Не совсем ясно имеется ли сразу информация о фактическом присутствии, 
-// по этому буду исходить из того что она догружается с сервера (в случае
-// если она не догружается все вроде очевидно, принимаем индекс массива за id и 
-// сопоставляем инфу из двух массивов)
-// 
-// 
-
+// Pt.staticColumn - сылка на div элемент колонки информацией
 // Pt.dynamicColumn - сылка на div элемент колонки со школой времени 
 // Pt.dynamicColumnWrap = сылка на div элемент обертки колонки со школой времени ;
 // Pt.graphDream - график формального рабочего дня;
@@ -18,14 +12,31 @@ function Pt(data, set) {
 		timeRangeStart: 8, // 0-23
 		timeRangeEnd: 21, // 1-24
 
+		// не отображать статистику
 		ignoreGraph: false,
 
+		// Отображать дату в ячейках
 		showTimeInCell: true,
 
-		stripTimeGrid: 8,
+		// максималное количество ячеек при которых
+		// дата отображается в формате hh:mm, при привышении
+		// hh
+		stripTimeGrid: 8, 
 
-		dynamicElementSize: 1200 - 300
+		// размер одной ячейки 
+		dynamicElementSize: 900,
 
+		// кастомный класс для пункта 
+		wraperCustomClass: false,
+
+		// отображение фактического графика по умолчанию
+		showGraphFact : true,
+
+		// отображение формального графика по умолчанию 
+		showGraphDream : true,
+
+		// переключение отображения графа по нажатию на строку
+		changeGraph : true
 
 	};
 
@@ -50,6 +61,7 @@ function Pt(data, set) {
 			n = n > 9 ? n : '0' + n;
 			return  strip ? n : n + ':00'
 		}
+
 
 		// создадим базовую структуру
 		function createPtStructure(){
@@ -86,6 +98,9 @@ function Pt(data, set) {
 
 
 			that.className = 'work-list__column-content-pt flex';
+			that.className += settings.wraperCustomClass ? " " + settings.wraperCustomClass : "";
+
+
 			staticColumn.className = 'work-list__static-column-pt flex-grow left-block';
 			dynamicColumn.className = 'work-list__dynamic-column-pt grow-this';
 			graphReal.className = 'work-list__statusBarReal';
@@ -103,16 +118,20 @@ function Pt(data, set) {
 			staticColumn.appendChild(ptRole);
 
 			dynamicColumn.appendChild(dynamicColumnWrap);
-			dynamicColumn.appendChild(graphDream);
-			dynamicColumn.appendChild(graphReal);
+
+			if(!settings.ignoreGraph){
+				dynamicColumn.appendChild(graphDream);
+				dynamicColumn.appendChild(graphReal);
+			}				
 
 
 			that.graphDream = graphDream;
 			that.graphReal = graphReal;
+			that.staticColumn = staticColumn;
 			that.dynamicColumn = dynamicColumn;
 			that.dynamicColumnWrap = dynamicColumnWrap;
-
 		}
+
 
 		// создадим "сетку" для графика 
 		function createPtGrid(){
@@ -144,16 +163,13 @@ function Pt(data, set) {
 			const 	elementSize = calcPtGridElementSize(),
 					elements = that.dynamicColumnWrap.children;
 			
-			console.log(elements);
 			for(let i = 0; i < elements.length; i++){
-				console.log(elements[i]);
 				elements[i].style.width = elementSize + 'px';
 				elements[i].style.left = elementSize * (i - settings.timeRangeStart) + 'px';
 			}
 			
 			calcGraphReal();
 			calcGraphDream();
-		
 		}
 
 
@@ -161,6 +177,7 @@ function Pt(data, set) {
 		function calcPtGridElementSize(){
 			return settings.dynamicElementSize / (settings.timeRangeEnd - settings.timeRangeStart);
 		}
+
 
 		// добавим мечту график 
 		function calcGraphDream(){
@@ -172,9 +189,6 @@ function Pt(data, set) {
 				
 			hourStart = hourStart.getHours();
 			hourEnd = hourEnd.getHours();
-				
-			console.log(hourStart);
-			console.log(hourEnd);
 
 			graphSize = hourEnd - hourStart;
 
@@ -201,34 +215,97 @@ function Pt(data, set) {
 		}
 
 
+		// отображение/скрытие фактического графика от bool
+		function showhideReal(bool){
+			if(bool){
+				that.graphReal.style.opacity = 1;
+			}else{
+				that.graphReal.style.opacity = 0;
+			}
+		}
+
+
+		// отображение/скрытие фактического графика от bool
+		function showhideDream(bool){
+			if(bool){
+				that.graphDream.style.opacity = 1;
+			}else{
+				that.graphDream.style.opacity = 0;
+			}
+		}
+
+
+		// переключение между графиками
+		function startChangeGraphListener(){
+			if(!settings.ignoreGraph && settings.changeGraph){
+				that.staticColumn.onclick = () => {
+					if(!that.showVariant){
+						that.showVariant = true;
+					}else{
+						that.showVariant = false;
+					}
+
+					showhideDream(that.showVariant);
+					showhideReal(!that.showVariant);
+
+				}
+			}
+		}
+
+
+		function changeGraph(){
+
+		}
+
 	// =======
 	// public functions (methods)
 	// =======
 
+	// изменение масштаба сетки
+	// в диапозоне от start часов
+	// до end часов
 	that.changeGridSize = (start, end) => {
-		if(!start || !end) return false
+		
+		console.log('changeGridSize', start, end);
+
+		if(typeof start != 'number' || typeof end != 'number') return false
+		if(start >= end){
+			console.log("первый аргумент должен быть больше аторого");
+			return false
+		}
 
 		settings.timeRangeStart = start;
 		settings.timeRangeEnd = end;
 
 		changePtGridSize();
-
 	}
 
+
+	that.showhideDream = showhideDream;
+
+	that.showhideReal = showhideReal;
 
 	// =======
 	// init
 	// =======
 
-	// DEL 
+
+	// DELETE
+	// припишем кастомные данные
 	if(data) Object.assign(values, data);
+
+	// припишем кастомные параметры
 	if(settings) Object.assign(settings, set);
+
+
 
 	createPtStructure();
 	createPtGrid();
 
 	calcGraphReal();
 	calcGraphDream();
+
+	startChangeGraphListener();
 
 	return that
 }

@@ -26,125 +26,41 @@
 			<div class="work-list__filter">
 				<div class="some-btn">
 					выбор даты
+					
 				</div>
 				<div class="some-btn">
-					выбор диапозона 
+
+					Выбор отображаемого диапозона [ 0 - 23 ] часа 
+
+					<br>
+					
+					<input type="text" id="grid-min" value="8">
+					<input type="text" id="grid-max" value="20">
+					<div id="grid-apply">
+						Применить 
+					</div>
 				</div>
 			</div>
 
 
-			<!-- Заголовок таблицы -->
 			<!-- 
 				С точки зрения SEO лучше это стелать через 
 				table/thead/tbody, но захолось сделать на блоках
 			-->
-			<div class="work-list__column-names flex">
-
-				<div class="work-list__static-column flex-grow left-block">
-					<div class="big">
-						Имя
-					</div>
-					<div class="big">
-						Место работы/роль
-					</div>
-				</div>
-
-				<div class="work-list__dynamic-column">
-				
-					<div class="small">
-						00.00
-					</div>
-					<div class="small">
-						01.00
-					</div>
-					<div class="small">
-						02.00
-					</div>
-					<div class="small">
-						03.00
-					</div>
-					<div class="small">
-						04.00
-					</div>
-					<div class="small">
-						05.00
-					</div>
-
-				</div>
-				
-			</div>
-
 
 			<!-- Содержание таблицы -->
 			<div class="work-list__column-content">
 				
-				<div class="work-list__column-content-pt flex">
+				<div class="work-list__column-content-pt flex __delete">
 
-					<div class="work-list__static-column-pt flex-grow left-block">
-						<div class="big">Влад</div>
-						<div class="big">Президент</div>
+					<!-- 
+						эти элементы я оставил что бы из конструктора пунктов
+						можно было почитать их размеры что бы формат полностью управлялся из CSS 
+					-->
+					<div class="work-list__static-column-pt flex-grow left-block " style="opacity: 0">
 					</div>
 
-					<div class="work-list__dynamic-column-pt flex-grow grow-this">
-						<div class="small">
-							.
-						</div>
-						<div class="small">
-							.
-						</div>
-						<div class="small">
-							.
-						</div>
-						<div class="small">
-							.
-						</div>
-						<div class="small">
-							.
-						</div>
-						<div class="small">
-							.
-						</div>
-
-						<div class="work-list__statusBar">
-							.
-						</div>
-					</div>
-
-
-				</div>
-
-				<div class="work-list__column-content-pt flex">
-
-						<div class="work-list__static-column-pt flex-grow left-block">
-							<div class="big">Влад</div>
-							<div class="big">Президент</div>
-						</div>
-
-						<div class="work-list__dynamic-column-pt flex-grow grow-this">
-							<div class="small">
-								.
-							</div>
-							<div class="small">
-								.
-							</div>
-							<div class="small">
-								.
-							</div>
-							<div class="small">
-								.
-							</div>
-							<div class="small">
-								.
-							</div>
-							<div class="small">
-								.
-							</div>
-							
-							<div class="work-list__statusBar">
-								.
-							</div>
-						</div>
-
+					<div class="work-list__dynamic-column-pt flex-grow grow-this  __dynamic-field-size" style="opacity: 0">
 					</div>
 
 				</div>
