@@ -34,7 +34,7 @@ window.onload = () => {
 		// }
 
 		try{
-			data = JSON.parse(DB3_json);
+			data = JSON.parse(DB3	_json);
 		}catch(e){
 			console.log(e);
 		}
@@ -244,6 +244,7 @@ function addObj(name = 'defName', place = 'defPlace', role = 'defRole'){
 	__TEST.virtual.push([name, place, role, ..._date[0]]);
 	__TEST.actual.push([name, place, role, ..._date[1]]);
 }
+
 
 
 // Это генерация элементов таблицы
