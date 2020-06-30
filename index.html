@@ -25,20 +25,21 @@
 			<!-- Фильтр по дате, возможно другой функционал -->
 			<div class="work-list__filter">
 				<div class="some-btn">
-					выбор даты
+					выбор диапозона
 					
 				</div>
 				<div class="some-btn">
 
-					Выбор отображаемого диапозона [ 0 - 23 ] часа 
-
-					<br>
+					<div>
+						Выбор отображаемого диапозона [ 0 - 23 ] часа 
+					</div>
 					
-					<input type="text" id="grid-min" value="8">
-					<input type="text" id="grid-max" value="20">
+					<input type="text" id="grid-min" class="grid-min" value="8">
+					<input type="text" id="grid-max" class="grid-max" value="20">
 					<div id="grid-apply">
 						Применить 
 					</div>
+					
 				</div>
 			</div>
 
@@ -73,6 +74,7 @@
 	</div>
 
 	<script src="public/js/c_pt.js"></script>
+	<script src="public/js/db.js"></script>
 	<script src="public/js/main.js"></script>
 </body>
 </html>

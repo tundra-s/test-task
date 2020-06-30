@@ -21,7 +21,7 @@ function Pt(data, set) {
 		// максималное количество ячеек при которых
 		// дата отображается в формате hh:mm, при привышении
 		// hh
-		stripTimeGrid: 8, 
+		stripTimeGrid: 10, 
 
 		// размер одной ячейки 
 		dynamicElementSize: 900,
@@ -30,13 +30,16 @@ function Pt(data, set) {
 		wraperCustomClass: false,
 
 		// отображение фактического графика по умолчанию
-		showGraphFact : true,
+		showGraphFact: true,
 
 		// отображение формального графика по умолчанию 
-		showGraphDream : true,
+		showGraphDream: true,
 
 		// переключение отображения графа по нажатию на строку
-		changeGraph : true
+		changeGraph: true,
+
+		// приорететное оторажение графа
+		showDreamFirst: true
 
 	};
 
@@ -122,7 +125,15 @@ function Pt(data, set) {
 			if(!settings.ignoreGraph){
 				dynamicColumn.appendChild(graphDream);
 				dynamicColumn.appendChild(graphReal);
-			}				
+			}
+
+			if(settings.showDreamFirst){
+				graphReal.style.opacity = 0;
+				graphDream.style.opacity = 1;				
+			}else{
+				graphReal.style.opacity = 1;
+				graphReal.style.opacity = 0;
+			}
 
 
 			that.graphDream = graphDream;
@@ -130,6 +141,9 @@ function Pt(data, set) {
 			that.staticColumn = staticColumn;
 			that.dynamicColumn = dynamicColumn;
 			that.dynamicColumnWrap = dynamicColumnWrap;
+
+			// просто переменная для переключателя режима
+			that.showVariant = true;
 		}
 
 
@@ -166,6 +180,10 @@ function Pt(data, set) {
 			for(let i = 0; i < elements.length; i++){
 				elements[i].style.width = elementSize + 'px';
 				elements[i].style.left = elementSize * (i - settings.timeRangeStart) + 'px';
+				if(settings.showTimeInCell){
+					elements[i].innerText = prettyTime(i, settings.stripTimeGrid < settings.timeRangeEnd - settings.timeRangeStart);
+				}
+				
 			}
 			
 			calcGraphReal();
@@ -252,11 +270,6 @@ function Pt(data, set) {
 			}
 		}
 
-
-		function changeGraph(){
-
-		}
-
 	// =======
 	// public functions (methods)
 	// =======
@@ -270,7 +283,7 @@ function Pt(data, set) {
 
 		if(typeof start != 'number' || typeof end != 'number') return false
 		if(start >= end){
-			console.log("первый аргумент должен быть больше аторого");
+			console.log("первый аргумент должен быть больше второго");
 			return false
 		}
 

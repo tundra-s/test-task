@@ -4,10 +4,15 @@
 */
 
 *{
-	box-sizing: border-box;
+	/*box-sizing: border-box;*/
 	margin: 0px;
 	padding: 0px;
 	font-family: 'Montserrat', 'Arial', sans-serif;
+}
+
+body{
+	background: rgb(40, 40, 40);
+	color: rgb(240, 240, 240);
 }
 
 .wrapper{
@@ -20,41 +25,27 @@
 /*===		DELETE 			===*/
 /*=============================*/
 
-.work-list__statusBarReal{
+.work-list__statusBarReal, .work-list__statusBarDream{
 	position: absolute;
 	width: 100px;
 	height: 10px;
 	top: 0px;
 	left: 0px;
 	border-radius: 10px;
-	background: red;
+	background: rgb(232, 76, 76);
+	transition: 0.4s ease-in-out;
 }
 
 
 .work-list__statusBarDream{
-	position: absolute;
-	width: 100px;
-	height: 10px;
 	top: 10px;
 	left: 0px;
-	border-radius: 10px;
-	background: green;
+	background: rgb(76, 239, 76);
 }
-
-
-
 
 .work-list__static-column1, .work-list__dynamic-column1{
 	/*border: 1px solid blue;*/
 }
-
-.border{
-	border: 1px solid red;
-}
-
-/*=============================*/
-/*===		/DELETE 		===*/
-/*=============================*/
 
 .flex, .flex-grow{
 	display: flex;
@@ -69,48 +60,109 @@
 	width: 300px;
 }
 
+/*=============================*/
+/*===		TABLE			===*/
+/*=============================*/
 
-.work-list__column-custom{
-	background: rgb(230, 230, 230);
-	color: green;
-}
 
 .work-list{
+	/*border: 1px solid red;*/
+}
+
+
+/* heder && filter */
+
+.work-list__header{
+	font-size: 1.4em;
+	padding-top: 30px;
+	padding-bottom: 20px;
+}
+
+
+.work-list__filter{
+	background: rgb(30, 30, 30);
+	padding: 10px 0px 30px 10px;
+	box-shadow: 0px 0px 10px 0px rgb(20, 20, 20) inset;
+}
+
+
+.work-list__filter>div:first-child{
+	padding: 10px 0px 10px 0;
+	font-size: 1.2em;
+	font-weight: 500;
+}
+
+
+.work-list__filter>div:nth-child(2)>div:first-child{
+	padding: 10px 0px 10px 0;
+	font-size: 1em;
+	font-weight: 300;
+	color: rgb(170, 170, 170);
+}
+
+.grid-min, .grid-max{
+	background: none;
+	border: none;
+	color: rgb(240, 240, 240);
+	border-bottom: 2px solid rgb(210, 210, 210);
+	height: 30px;
+	width: 50px;
+	margin-right: 10px;
+	text-align: center;
+	font-weight: 500;
+	font-size: 1.2em;
+	outline: none;
+}
+
+
+.work-list__filter input:focus{
+	color: rgb(87, 195, 74);
+	border-bottom: 2px solid rgb(87, 195, 74);
+}
+
+
+#grid-apply{
+	border: 2px solid rgb(210, 210, 210);
+	border-radius: 3px;
+	transition: 0.3s ease-in-out;
+}
+
+#grid-apply:hover{
+	color: rgb(87, 195, 74);
+	border: 2px solid rgb(87, 195, 74);
+	border-radius: 3px;
+
+}
+
+
+.work-list__static-column{
+	display: flex;
+	width: 300px;
+	border: 1px solid green;
+}
+
+.work-list__static-column-pt>div{
+	cursor: pointer;
+}
+
+
+.work-list__dynamic-column{
+	display: flex;
+	position: relative;
+	flex-grow: 1;
 	border: 1px solid red;
 }
 
-.work-list__column-names{
-	/**/
+.work-list__dynamic-column>div{
+	flex-grow: 1;
+	font-size: 0.8em;
 }
-
-	.work-list__static-column{
-		display: flex;
-		width: 300px;
-		border: 1px solid green;
-	}
-
-	.work-list__dynamic-column{
-		display: flex;
-		position: relative;
-		flex-grow: 1;
-		border: 1px solid red;
-	}
-
-		.work-list__dynamic-column>div{
-			flex-grow: 1;
-			font-size: 0.8em;
-		}
-
-
-.work-list__column-content-pt{}
-
-
-
-
-
 
 
 .work-list__dynamic-column-pt{
+	/*padding: 4px 0px;*/
+	height: 30px;
+	line-height: 30px;
 	position: relative;
 }
 
@@ -120,10 +172,39 @@
 	border-left: 1px solid rgb(50, 50, 50);
 }
 
-.work-list__dynamic-column-pt div{
+
+.work-list__dynamic-column-pt>div>div{
+	border-left: 1px solid rgb(70, 70, 70);
+	background: linear-gradient(90deg, rgb(35, 35, 35), rgb(40, 40, 40));
+	padding-left: 3px;
 	transition: 0.4s ease-in-out;
+	height: 100%;
+	text-align: center;
 }
 
+
+/* custom header */
+
+.work-list__column-custom{
+	background: rgb(35, 35, 35);
+	color: rgb(230, 230, 230);
+	font-weight: 500;
+}
+
+
+
+.work-list__column-custom .work-list__dynamic-column-pt>div>div{
+	background: rgb(30, 30, 30);
+	border: none;
+}
+
+
+
+
+
+/*=============================*/
+/*===		OTHER 			===*/
+/*=============================*/
 
 
 #grid-apply{
@@ -133,7 +214,8 @@
 }
 
 .input-error{
-	border: 1px solid red;
+	border-bottom: 3px solid red ;
+	color: red ;
 }
 
 
